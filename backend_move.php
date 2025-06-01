@@ -4,7 +4,6 @@ require_once '_db.php';
 class Result {}
 
 try {
-    // Перевірка накладання бронювань (перетинів)
     $stmt = $db->prepare("
         SELECT COUNT(*) as cnt FROM reservations 
         WHERE NOT ((end <= :start) OR (start >= :end)) 
@@ -29,7 +28,6 @@ try {
         exit;
     }
 
-    // Оновлення бронювання, якщо немає конфліктів
     $stmt = $db->prepare("
         UPDATE reservations 
         SET start = :start, end = :end, room_id = :resource 
