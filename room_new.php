@@ -1,5 +1,5 @@
 <?php
-require_once "_db.php";  // Підключення до БД через PDO
+require_once "_db.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json; charset=utf-8');
@@ -64,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 
-    <!-- Підключаємо DayPilot бібліотеку, щоб DayPilot був визначений -->
     <script src="js/daypilot-all.min.js"></script>
 </head>
 <body>
@@ -107,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 dataType: "json",
                 success: function(response) {
                     if (response.result === "OK") {
-                        // Закриваємо модальне вікно DayPilot та повертаємо успішний результат
                         DayPilot.Modal.close({ result: "OK" });
                     } else {
                         $("#error").text(response.message || "Сталася помилка");
