@@ -72,7 +72,6 @@
             <option value="4">Сімейні</option>
         </select>
 
-        <!-- Кнопка для додавання кімнати -->
         <button id="addRoomBtn">Додати нову кімнату</button>
     </div>
 
@@ -161,7 +160,6 @@
         });
     };
 
-    // Додавання підтримки видалення бронювання
     dp.eventDeleteHandling = "Update";
     dp.onEventDeleted = function(args) {
         $.post("backend_delete.php", { id: args.e.id() }, function() {
@@ -251,12 +249,11 @@
             loadResources();
         });
 
-        // Обробник кнопки "Додати нову кімнату"
         $("#addRoomBtn").click(function() {
             var modal = new DayPilot.Modal({
                 onClosed: function(modalArgs) {
                     if (modalArgs.result && modalArgs.result.result === "OK") {
-                        loadResources(); // Підвантажити оновлений список кімнат
+                        loadResources();
                         dp.message("Кімнату додано");
                     }
                 }
